@@ -89,7 +89,6 @@ class SearchInputDecoration extends InputDecoration {
       'This feature was deprecated after v1.26.0',
     )
     super.maintainHintHeight,
-    super.maintainHintSize,
     super.suffixIconColor,
     super.prefix,
     super.prefixIconColor,
@@ -100,7 +99,6 @@ class SearchInputDecoration extends InputDecoration {
     super.disabledBorder,
     super.contentPadding,
     super.hintText,
-    super.hint,
     super.hintStyle,
     super.labelText,
     super.labelStyle,
@@ -203,7 +201,6 @@ class SearchInputDecoration extends InputDecoration {
   }) {
     return SearchInputDecoration(
       maintainHintHeight: maintainHintHeight ?? this.maintainHintHeight,
-      maintainHintSize: maintainHintSize ?? this.maintainHintSize,
       cursorColor: cursorColor ?? this.cursorColor,
       textCapitalization: textCapitalization ?? this.textCapitalization,
       searchStyle: searchStyle ?? this.searchStyle,
@@ -216,7 +213,6 @@ class SearchInputDecoration extends InputDecoration {
       errorText: errorText ?? this.errorText,
       error: error ?? this.error,
       hintTextDirection: hintTextDirection ?? this.hintTextDirection,
-      hint: hint ?? this.hint,
       hintFadeDuration: hintFadeDuration ?? this.hintFadeDuration,
       helper: helper ?? this.helper,
       cursorErrorColor: cursorErrorColor ?? this.cursorErrorColor,
