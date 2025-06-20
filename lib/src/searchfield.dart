@@ -705,17 +705,21 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
       _suggestionDirection = widget.suggestionDirection;
       _calculateDimensions();
     }
+
+    // Fix: clone as modifiable list
     if (!listEquals(oldWidget.suggestions, widget.suggestions)) {
       length = widget.suggestions.length;
       suggestionStream.sink.add(widget.suggestions);
-      filteredResult.clear();
-      filteredResult.addAll(widget.suggestions);
-      // if a item was already selected
-      if (highlightIndex >= 0) {
+      filteredResult = List<SearchFieldListItem<T>>.from(widget.suggestions);
+
+      if (highlightIndex >= 0 &&
+          highlightIndex < oldWidget.suggestions.length) {
         highlightIndex = widget.suggestions.indexWhere(
-            (element) => element == oldWidget.suggestions[highlightIndex]);
+          (element) => element == oldWidget.suggestions[highlightIndex],
+        );
       }
     }
+
     if (oldWidget.scrollbarDecoration != widget.scrollbarDecoration) {
       if (widget.scrollbarDecoration == null) {
         _scrollbarDecoration = ScrollbarDecoration();
