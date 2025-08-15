@@ -8,19 +8,57 @@ class SearchInputDecoration extends InputDecoration {
   final TextStyle? searchStyle;
 
   /// The color of the cursor.
+  /// The cursor indicates the current location of text insertion point in the field.
+  /// If this is null it will default to the ambient DefaultSelectionStyle.cursorColor. If that is
+  /// null, and the ThemeData.platform is TargetPlatform.iOS or TargetPlatform.macOS it will use
+  /// CupertinoThemeData.primaryColor. Otherwise it will use the value of ColorScheme.primary of
+  /// ThemeData.colorScheme.
+  ///
   final Color cursorColor;
 
-  /// The color of the cursor when error.
+  ///Creates a [FormField] that contains a [TextField].
+
+  /// The color of the cursor when the InputDecorator is showing an error.
+  ///
+  /// If this is null it will default to TextStyle.color of InputDecoration.errorStyle. If that is
+  /// null, it will use ColorScheme.error of ThemeData.colorScheme.
+  ///
   final Color? cursorErrorColor;
 
+  /// How tall the cursor will be.
+  ///
+  /// If this property is null, RenderEditable.preferredLineHeight will be used.
   final double? cursorHeight;
+
+  /// How thick the cursor will be.
+  /// Defaults to 2.0.
+  /// The cursor will draw under the text. The cursor width will extend to the right of the
+  /// boundary between characters for left-to-right text and to the left for right-to-left text.
+  /// This corresponds to extending downstream relative to the selected position. Negative values
+  /// may be used to reverse this behavior.
+  ///
   final double? cursorWidth;
+
+  /// Whether the cursor will animate from fully transparent to fully opaque during each cursor
+  /// blink.
+  /// By default, the cursor opacity will animate on iOS platforms and will not animate on Android /
+  /// platforms.
+  ///
   final bool? cursorOpacityAnimates;
+
+  /// The radius of the cursor.How rounded the corners of the cursor should be.
+  /// By default, the cursor has no radius.
+  ///
   final Radius? cursorRadius;
+
+  /// The appearance of the keyboard.
+  /// This setting is only honored on iOS devices.
+  ///
+  /// If unset, defaults to ThemeData.brightness.
+  ///
   final Brightness? keyboardAppearance;
 
   final Key? key;
-
   SearchInputDecoration({
     this.key,
     this.cursorColor = Colors.black,
@@ -47,7 +85,8 @@ class SearchInputDecoration extends InputDecoration {
     super.label,
     @Deprecated(
       'Use maintainHintSize instead. '
-      'Deprecated after v1.26.0',
+      'This will maintain both hint height and hint width. '
+      'This feature was deprecated after v1.26.0',
     )
     super.maintainHintHeight,
     super.suffixIconColor,
@@ -89,9 +128,6 @@ class SearchInputDecoration extends InputDecoration {
     super.errorMaxLines,
     super.errorStyle,
     super.suffixIconConstraints,
-    // ✅ New params from latest Flutter
-    super.visualDensity,
-    super.semanticsService,
   });
 
   @override
@@ -162,17 +198,16 @@ class SearchInputDecoration extends InputDecoration {
     TextStyle? suffixStyle,
     String? suffixText,
     bool? maintainHintSize,
-    // ✅ New from Flutter master
-    VisualDensity? visualDensity,
-    String? semanticsService,
   }) {
     return SearchInputDecoration(
       maintainHintHeight: maintainHintHeight ?? this.maintainHintHeight,
       cursorColor: cursorColor ?? this.cursorColor,
       textCapitalization: textCapitalization ?? this.textCapitalization,
       searchStyle: searchStyle ?? this.searchStyle,
-      prefixIconConstraints: prefixIconConstraints ?? this.prefixIconConstraints,
-      suffixIconConstraints: suffixIconConstraints ?? this.suffixIconConstraints,
+      prefixIconConstraints:
+          prefixIconConstraints ?? this.prefixIconConstraints,
+      suffixIconConstraints:
+          suffixIconConstraints ?? this.suffixIconConstraints,
       hintMaxLines: hintMaxLines ?? this.hintMaxLines,
       floatingLabelStyle: floatingLabelStyle ?? this.floatingLabelStyle,
       errorText: errorText ?? this.errorText,
@@ -183,7 +218,8 @@ class SearchInputDecoration extends InputDecoration {
       cursorErrorColor: cursorErrorColor ?? this.cursorErrorColor,
       cursorHeight: cursorHeight ?? this.cursorHeight,
       cursorWidth: cursorWidth ?? this.cursorWidth,
-      cursorOpacityAnimates: cursorOpacityAnimates ?? this.cursorOpacityAnimates,
+      cursorOpacityAnimates:
+          cursorOpacityAnimates ?? this.cursorOpacityAnimates,
       cursorRadius: cursorRadius ?? this.cursorRadius,
       keyboardAppearance: keyboardAppearance ?? this.keyboardAppearance,
       alignLabelWithHint: alignLabelWithHint ?? this.alignLabelWithHint,
@@ -200,8 +236,10 @@ class SearchInputDecoration extends InputDecoration {
       errorStyle: errorStyle ?? this.errorStyle,
       fillColor: fillColor ?? this.fillColor,
       filled: filled ?? this.filled,
-      floatingLabelAlignment: floatingLabelAlignment ?? this.floatingLabelAlignment,
-      floatingLabelBehavior: floatingLabelBehavior ?? this.floatingLabelBehavior,
+      floatingLabelAlignment:
+          floatingLabelAlignment ?? this.floatingLabelAlignment,
+      floatingLabelBehavior:
+          floatingLabelBehavior ?? this.floatingLabelBehavior,
       focusColor: focusColor ?? this.focusColor,
       focusedBorder: focusedBorder ?? this.focusedBorder,
       focusedErrorBorder: focusedErrorBorder ?? this.focusedErrorBorder,
@@ -229,9 +267,6 @@ class SearchInputDecoration extends InputDecoration {
       suffixIconColor: suffixIconColor ?? this.suffixIconColor,
       suffixStyle: suffixStyle ?? this.suffixStyle,
       suffixText: suffixText ?? this.suffixText,
-      maintainHintSize: maintainHintSize ?? this.maintainHintSize,
-      visualDensity: visualDensity ?? this.visualDensity,
-      semanticsService: semanticsService ?? this.semanticsService,
     );
   }
 }
