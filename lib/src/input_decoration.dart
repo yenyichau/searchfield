@@ -89,6 +89,7 @@ class SearchInputDecoration extends InputDecoration {
       'This feature was deprecated after v1.26.0',
     )
     super.maintainHintHeight,
+    super.maintainHintSize,
     super.suffixIconColor,
     super.prefix,
     super.prefixIconColor,
@@ -99,6 +100,7 @@ class SearchInputDecoration extends InputDecoration {
     super.disabledBorder,
     super.contentPadding,
     super.hintText,
+    super.hint,
     super.hintStyle,
     super.labelText,
     super.labelStyle,
@@ -130,8 +132,8 @@ class SearchInputDecoration extends InputDecoration {
     super.suffixIconConstraints,
   });
 
-  @override
-  SearchInputDecoration copyWith({
+  /// Creates a copy of this SearchInputDecoration with the given fields replaced.
+  SearchInputDecoration copyWithSearch({
     Key? key,
     Color? cursorColor,
     Color? cursorErrorColor,
