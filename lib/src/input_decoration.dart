@@ -198,6 +198,8 @@ class SearchInputDecoration extends InputDecoration {
     TextStyle? suffixStyle,
     String? suffixText,
     bool? maintainHintSize,
+    // New parameter from Flutter's InputDecoration
+    String? semanticsService,
   }) {
     return SearchInputDecoration(
       maintainHintHeight: maintainHintHeight ?? this.maintainHintHeight,
@@ -267,6 +269,7 @@ class SearchInputDecoration extends InputDecoration {
       suffixIconColor: suffixIconColor ?? this.suffixIconColor,
       suffixStyle: suffixStyle ?? this.suffixStyle,
       suffixText: suffixText ?? this.suffixText,
+      semanticsService: semanticsService ?? this.semanticsService,
     );
   }
 }
